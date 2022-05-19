@@ -1,6 +1,5 @@
 from datetime import datetime
 from time import sleep
-import pytz
 import getopt, sys
 import RPi.GPIO as GPIO
 
@@ -77,9 +76,8 @@ def set_fan(status):
 
 def update_fan_status():
     # Calculate temp_limit based on day/night mode
-    now_utc = datetime.now(pytz.utc)
-    now_cet = now_utc.astimezone(pytz.timezone("CET"))
-    if now_cet.hour > 23 or now_cet.hour < 9:
+    now = datetime.now()
+    if now.hour >= 23 or now.hour <= 9:
         # Night mode (incrase TEMP_LIMIT by 50% to prevent loud fan noise at night)
         temp_limit = TEMP_LIMIT * 1.5
     else:

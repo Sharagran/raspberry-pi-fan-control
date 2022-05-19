@@ -14,7 +14,7 @@ then
 fi
 
 # install dependencies
-pip3 install pytz getopt RPi.GPIO
+pip3 install getopt RPi.GPIO
 
 # copy files
 mkdir /opt/my_scripts
