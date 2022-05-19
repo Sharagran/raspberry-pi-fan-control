@@ -1,0 +1,12 @@
+[Unit]
+Description=raspberry fan control
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=10s
+ExecStart=/usr/bin/python3 -u /opt/my_scripts/fan-controller.py --verbose
+
+[Install]
+WantedBy=multi-user.target
